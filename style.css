@@ -1,0 +1,80 @@
+.heading{
+    height: 100px;
+    align-items: center;
+}
+h1{
+    margin-bottom: 0;
+    font-weight: 900;
+}
+h2{
+    padding-top: 30px;
+    font-weight: 700;
+}
+
+#subNav{
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+    min-height: 54px;
+    align-items: center;
+}
+#subNav div{
+    border-right: 1px solid rgba(37,38,39,0.15);
+    text-align: center;
+}
+#subNav a{
+    font-size: 14px;
+    color: #252627;
+}
+.video-container{
+    padding-top: 20px;
+}
+video{
+    border-radius: 15px;
+}
+video:focus{
+    outline: none;
+}
+
+#videoTitle,#description{
+    padding-right: 50px;
+}
+
+.thumbnail img{
+    border-radius: 8px;
+}
+.thumbnail p{
+    color: white;
+    font-size: .8rem;
+    padding-right: 10px;
+    position: relative;
+    bottom: 25px;
+    margin: 0;
+}
+
+#loadMore{
+    width: 100%;
+    background-color: #bf1313;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+#playListColumn{
+    padding: 0;
+}
+
+.playlistItem{
+    border-bottom: 1px solid gray;
+    padding-top: 20px;
+    margin: 0;
+}
+.playlistItem p{
+    font-size: 0.9rem;
+}
+
+
+@media screen and (min-width: 992px){
+    .section{
+        padding: 0 120px;
+    }
+}
