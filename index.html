@@ -4,22 +4,52 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>My IGN</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link rel="stylesheet" href="style.css">
 
-    <title>My IGN</title>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/a2c70a8f6f.js" crossorigin="anonymous"></script>
   </head>
   <body>
    
-    <div class="">
-       <div class="row section heading">
+       <!-- <div class="row section heading">
             <div class="col-md-3">
                 <h1 mb-0>IGN</h1>
             </div>
-       </div>
+       </div> -->
+
+       <nav id="navContainer" class="navbar navbar-expand-lg navbar-light bg-light section">
+        <a class="navbar-brand" title="NewsWriter911 / CC BY-SA (https://creativecommons.org/licenses/by-sa/4.0)" href="javascript:window.location.reload()">
+          <img width="32" alt="IGN Logo" src="https://upload.wikimedia.org/wikipedia/commons/d/d4/IGN_Logo.png">
+          <span id="logo">IGN</span>
+        </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse"    data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="mainNav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="#" class="nav-link">New</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Videos</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Reviews</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Shows</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Wikis</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                More
+              </a>
+            </li>
+          </ul>
+          <i class="fas fa-search ml-2"></i>
+          <div id="signIn">
+            <button class="btn myButton">Sign In</button>
+          </div>
+        </div>
+       </nav>
 
         <div id="subNav" class="row justify-content-center d-none d-md-flex ">
             <div class="col-2 align-text-middle"><a href="">Kingdom Hearts III</a></div>
@@ -31,7 +61,7 @@
 
 <!-- Main Section -->
     <div class="section">
-        <div class="row pt-5">
+        <div class="row pt-5 m-auto">
             <div class="col-12 col-lg-8 pr-5 pl-5 pl-lg-0 justify-content-center text-start">
                <div class="video-container">
                     <video id="videoPlayer" width="100%" height="auto" controls>
@@ -48,7 +78,7 @@
                     
                 </div>
                 
-                <button id="loadMore" class="btn  my-3">Load More</button>
+                <button id="loadMore" class="btn  my-3 myButton">Load More</button>
             </div>
         </div>
     </div>
