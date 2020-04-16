@@ -136,9 +136,10 @@ video:focus{
     position: relative;
     bottom: 2px;
 }
-.pauseIcon.fa-pause-circle{
+.pauseIcon.fa-pause-circle, .muteIcon.fa-volume-mute, .compressIcon.fa-compress{
     display: none;
 }
+
 
 
 .timer {
@@ -152,7 +153,8 @@ video:focus{
     position: absolute;
     left: 0;
     top: 0;
-    height: 2px;
+    height: 3px;
+    cursor: pointer;
 }
 .controlContainer form{
 
@@ -165,7 +167,7 @@ input[type=range]{
     color: transparent; */
     /* width: 100%; */
 }
-input[type=range] {
+/* input[type=range] {
     position: absolute;
     left: 0;
     top: 0px;
@@ -173,10 +175,7 @@ input[type=range] {
     height: 2px;
     z-index: 6;
     cursor: pointer;
-}
-
-
-
+} */
 
 #timerBar{
     position: absolute;
@@ -184,7 +183,7 @@ input[type=range] {
     top: 0px;
     background-color: rgba(255,255,255,0.3);
     width: 100%;
-    height: 2px;
+    height: 3px;
     z-index: 2;
 }
 #loadedBar{
