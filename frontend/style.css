@@ -159,3 +159,13 @@ video:focus{
     width: 60%;
     z-index: 4;
 }
+#playhead{
+    z-index: 5;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 3px solid #f2f2f2;
+    background-color: #bf1313;
+    top: -4px;
+    left: 60%;
+}
