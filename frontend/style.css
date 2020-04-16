@@ -37,9 +37,7 @@ h2{
 #subNav a:hover{
     text-decoration: none;
 }
-.video-container{
-    padding-top: 20px;
-}
+
 video{
     border-radius: 15px;
 }
@@ -96,4 +94,68 @@ video:focus{
     .section, #navContainer{
         padding: 0 120px;
     }
+}
+
+.video-container{
+    padding-top: 20px;
+    position: relative;
+    z-index: 0;
+}
+
+.video-container:hover .controlContainer, .video-container:focus .controlContainer{
+    opacity: 1;
+}
+
+.controlContainer{
+    /* visibility: hidden; */
+    opacity: 1;
+    transition: 300ms all;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 10px;
+    padding: 0 10px;
+    left: 0px;
+    z-index: 1;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    /* box-shadow: 3px 3px 5px black; */
+    /* display: flex; */
+    align-items: center;
+}
+.controls button{
+    background-color: transparent;
+    color: white;
+    font-size: x-large;
+    padding: 0;
+}
+
+
+.timer {
+    line-height: 38px;
+    color: white;
+    position: relative;
+    padding-bottom: 5px;
+  }
+  
+.timer div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 2px;
+}
+#timerBar{
+    background-color: rgba(255,255,255,0.3);
+    width: 100%;
+    z-index: 2;
+}
+#loadedTime{
+    background-color: rgba(191, 19, 19, .9);
+    width: 75%;
+    z-index: 3;
+}
+#elapsedTime{
+    background-color: white;
+    width: 60%;
+    z-index: 4;
 }
