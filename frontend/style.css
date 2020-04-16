@@ -39,7 +39,7 @@ h2{
 }
 
 video{
-    border-radius: 15px;
+    border-radius: 5px;
 }
 video:focus{
     outline: none;
@@ -107,20 +107,19 @@ video:focus{
 }
 
 .controlContainer{
-    /* visibility: hidden; */
-    opacity: 1;
+    visibility: hidden;
+    opacity: 0;
     transition: 300ms all;
-    border-radius: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     position: absolute;
-    bottom: 10px;
-    padding: 0 10px;
+    bottom: 5px;
+    padding: 10px 10px 0 10px;
     left: 0px;
     z-index: 1;
     width: 100%;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    /* box-shadow: 3px 3px 5px black; */
-    /* display: flex; */
     align-items: center;
 }
 .controls button{
@@ -128,6 +127,17 @@ video:focus{
     color: white;
     font-size: x-large;
     padding: 0;
+    margin-right: 5px;
+}
+.controls button:focus{
+    outline: none;
+}
+.controls span{
+    position: relative;
+    bottom: 2px;
+}
+.pauseIcon.fa-pause-circle{
+    display: none;
 }
 
 
@@ -144,19 +154,47 @@ video:focus{
     top: 0;
     height: 2px;
 }
+.controlContainer form{
+
+}
+
+input[type=range]{
+    
+    /* background:transparent;
+    border-color: transparent;
+    color: transparent; */
+    /* width: 100%; */
+}
+input[type=range] {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    width: 100%; 
+    height: 2px;
+    z-index: 6;
+    cursor: pointer;
+}
+
+
+
+
 #timerBar{
+    position: absolute;
+    left: 0;
+    top: 0px;
     background-color: rgba(255,255,255,0.3);
     width: 100%;
+    height: 2px;
     z-index: 2;
 }
-#loadedTime{
+#loadedBar{
     background-color: rgba(191, 19, 19, .9);
-    width: 75%;
+    width: 0%;
     z-index: 3;
 }
-#elapsedTime{
+#elapsedBar{
     background-color: white;
-    width: 60%;
+    width: 0%;
     z-index: 4;
 }
 #playhead{
@@ -167,5 +205,5 @@ video:focus{
     border: 3px solid #f2f2f2;
     background-color: #bf1313;
     top: -4px;
-    left: 60%;
+    left: 0%;
 }

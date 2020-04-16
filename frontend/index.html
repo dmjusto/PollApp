@@ -13,6 +13,7 @@
 
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/a2c70a8f6f.js" crossorigin="anonymous"></script>
+
   </head>
   <body>
 
@@ -58,21 +59,26 @@
         <div class="row pt-5 m-auto">
             <div class="col-12 col-lg-8 pr-5 pl-5 pl-lg-0 justify-content-center text-start">
                <div class="video-container">
-                    <video id="videoPlayer" width="100%" height="auto" >
+                    <video id="videoPlayer" width="100%" height="auto" controls>
                     </video>
                     <div class="controlContainer">
                       
                       <div class="timer">
+                        <!-- <input id="rangeInput" type="range" min="0" max="100"> -->
                         <div id="timerBar"></div>
-                        <div id="loadedTime"></div>
-                        <div id="elapsedTime"></div>
+                        <div id="loadedBar"></div>
+                        <div id="elapsedBar"></div>
                         <div id="playhead"></div>
                       </div>
                       <!-- <div id="timePassed" class="timer"></div> -->
 
                       <div class="controls">
-                        <button class="play border-0" aria-label="play pause toggle"><i class="far fa-play-circle"></i></button>
-                       <span aria-label="timer">00:00</span>
+                        <button class="play border-0" aria-label="play pause toggle">
+                          <i class="playIcon far fa-play-circle"></i>
+                          <i class="pauseIcon far fa-pause-circle"></i>
+                        </button>
+                       <span id="elapsedTime" aria-label="timer">00:00</span>
+                       <span>/</span><span id="totalTime">00:00</span>
                       </div>
                       
 
@@ -95,6 +101,7 @@
     </div>
 
 
+    <script src="customPlayer.js"></script>
     <script src="script.js"></script>
 
     <!-- Optional JavaScript -->

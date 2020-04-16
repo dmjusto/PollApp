@@ -9,12 +9,12 @@ const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 const targetUrl = 'https://ign-apis.herokuapp.com/videos?startIndex='
 
 // Selectors
-var videoSource = document.createElement('source');
-var videoPlayer = document.querySelector("#videoPlayer");
-var videoTitle = document.querySelector('#videoTitle'); 
-var description = document.querySelector('#description');
-var loadMoreBtn = document.querySelector('#loadMore');
-var plSection = document.querySelector('.playlistSection');
+const videoSource = document.createElement('source');
+const videoPlayer = document.querySelector("#videoPlayer");
+const videoTitle = document.querySelector('#videoTitle'); 
+const description = document.querySelector('#description');
+const loadMoreBtn = document.querySelector('#loadMore');
+const plSection = document.querySelector('.playlistSection');
 
 videoPlayer.appendChild(videoSource);
 
