@@ -18,7 +18,7 @@ const unmutedIcon = document.querySelector('.unmutedIcon');
 const mutedIcon = document.querySelector('.mutedIcon');
 
 const timerWrapper = document.querySelector('.timer');
-const timeRangeSlider = document.querySelector('#rangeInput')
+// const timeRangeSlider = document.querySelector('#rangeInput')
 const timerBar = document.querySelector('#timerBar');
 const loadedBar = document.querySelector('#loadedBar');
 const elapsedBar = document.querySelector('#elapsedBar');
@@ -52,7 +52,23 @@ media.addEventListener('play', function(){
 })
 media.addEventListener('click',playPauseMedia);
 
+timerWrapper.addEventListener('click', function(e){
+    if(e.target !== playhead){
+        videoSkip(e);
+    }
+})
+// elapsedBar.addEventListener('click', function(e){
+//     videoSkip(e);
+// })
 
+
+
+function videoSkip(e)
+{
+    const clickedX = Math.round(e.offsetX / timerBar.offsetWidth * 100) / 100;
+    const seekTime = media.duration * clickedX;
+    media.currentTime = seekTime;
+}
 
 /*****************
  * FUNCTIONS
