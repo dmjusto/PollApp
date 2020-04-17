@@ -20,7 +20,14 @@ const plSection = document.querySelector('.playlistSection');
 videoPlayer.appendChild(videoSource);
 
 //Event Listeners
-videoPlayer.addEventListener('ended',playNext);
+videoPlayer.addEventListener('ended',function(){
+    if(shouldLoop){
+        videoPlayer.play();
+    }
+    else{
+        playNext();
+    }
+});
 
 loadMoreBtn.addEventListener('click', function(){
     const counter = thumbs.length;

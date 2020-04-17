@@ -57,18 +57,10 @@ timerWrapper.addEventListener('click', function(e){
         videoSkip(e);
     }
 })
-// elapsedBar.addEventListener('click', function(e){
-//     videoSkip(e);
-// })
 
 
 
-function videoSkip(e)
-{
-    const clickedX = Math.round(e.offsetX / timerBar.offsetWidth * 100) / 100;
-    const seekTime = media.duration * clickedX;
-    media.currentTime = seekTime;
-}
+
 
 /*****************
  * FUNCTIONS
@@ -120,6 +112,13 @@ function toggleIcons(icon1, icon2, turnOff){
     icon1.style.display = 'none';
     icon2.style.display = 'inline-block';
     }
+}
+
+function videoSkip(e)
+{
+    const clickedX = e.offsetX / timerBar.offsetWidth;
+    const seekTime = media.duration * clickedX;
+    media.currentTime = seekTime;
 }
 
 function updateTimer(){
