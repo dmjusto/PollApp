@@ -127,7 +127,7 @@ video:focus{
     color: white;
     font-size: x-large;
     padding: 0;
-    margin-right: 5px;
+    margin-right: 8px;
 }
 .controls button:focus{
     outline: none;
@@ -136,8 +136,14 @@ video:focus{
     position: relative;
     bottom: 2px;
 }
-.pauseIcon.fa-pause-circle, .muteIcon.fa-volume-mute, .compressIcon.fa-compress{
+.pauseIcon.fa-pause-circle, .mutedIcon.fa-volume-mute, .compressIcon.fa-compress{
     display: none;
+}
+.controls button.loop{
+    border-radius: 10%;
+    padding: 0 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 
