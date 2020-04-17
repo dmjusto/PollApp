@@ -12,7 +12,8 @@ const targetUrl = 'https://ign-apis.herokuapp.com/videos?startIndex='
 // Selectors
 const videoSource = document.createElement('source');
 const videoPlayer = document.querySelector("#videoPlayer");
-const videoTitle = document.querySelector('#videoTitle'); 
+const videoTitle = document.querySelector('.videoTitle'); 
+const articleTitle = document.querySelector('#articleTitle');
 const description = document.querySelector('#description');
 const loadMoreBtn = document.querySelector('#loadMore');
 const plSection = document.querySelector('.playlistSection');
@@ -80,6 +81,7 @@ function loadNext(){
     videoSource.setAttribute('src', nextVideo.assets[1].url);
     videoPlayer.load();
     videoTitle.textContent = nextVideo.metadata.title;
+    articleTitle.textContent = nextVideo.metadata.title;
     description.textContent = nextVideo.metadata.description;
     videoPlayer.poster = nextVideo.thumbnails[1].url;
 }
@@ -155,6 +157,7 @@ function generatePlaylist(){
             videoSource.setAttribute('src', nextVideo.assets[1].url);
             videoPlayer.load();
             videoTitle.textContent = nextVideo.metadata.title;
+            articleTitle.textContent = nextVideo.metadata.title;
             description.textContent = nextVideo.metadata.description;
             videoPlayer.play();
             playList.splice(index, 1);
