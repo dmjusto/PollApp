@@ -40,7 +40,6 @@ controls.style.visibility = 'visible';
  ******************/
 play.addEventListener('click', playPauseMedia);
 mute.addEventListener('click', toggleSound);
-
 loop.addEventListener('click', toggleLoopPlay);
 
 media.addEventListener('timeupdate', updateTimer);
