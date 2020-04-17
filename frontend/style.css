@@ -151,6 +151,9 @@ video:focus{
 .controls button:focus{
     outline: none;
 }
+.controls button:hover{
+    color: rgb(175, 175, 175);
+}
 .controls span{
     position: relative;
     bottom: 2px;
