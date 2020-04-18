@@ -113,6 +113,7 @@ video:focus{
 }
 .video-container .videoTitle{
     opacity: 0;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 1);
     position: absolute;
     color: white;
     top: 10px;
@@ -152,7 +153,7 @@ video:focus{
     outline: none;
 }
 .controls button:hover{
-    color: rgb(175, 175, 175);
+    color: rgb(216, 216, 216);
 }
 .controls span{
     position: relative;
