@@ -142,6 +142,9 @@ video:focus{
     color: white;
     align-items: center;
 }
+.controls{
+    position: relative;
+}
 .controls button{
     background-color: transparent;
     color: white;
@@ -159,7 +162,8 @@ video:focus{
     position: relative;
     bottom: 2px;
 }
-.pauseIcon.fa-pause-circle, .mutedIcon.fa-volume-mute, .compressIcon.fa-compress{
+.pauseIcon.fa-pause-circle, .mutedIcon.fa-volume-mute,
+ .compressIcon.fa-compress, .exitFullscreenIcon.fa-compress{
     display: none;
 }
 .controls button.loop{
@@ -167,6 +171,11 @@ video:focus{
     padding: 0 5px;
     margin-bottom: 5px;
     margin-top: 5px;
+}
+.controls button.fullscreen{
+    position: absolute;
+    right: 0;
+    margin: 0;
 }
 
 

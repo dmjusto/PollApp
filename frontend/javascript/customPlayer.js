@@ -17,6 +17,10 @@ const mute = document.querySelector('.mute');
 const unmutedIcon = document.querySelector('.unmutedIcon');
 const mutedIcon = document.querySelector('.mutedIcon');
 
+const fullscreen = document.querySelector('.fullscreen');
+const fullscreenIcon = document.querySelector('.fullscreenIcon');
+const exitFullscreenIcon = document.querySelector('.exitFullscreenIcon');
+
 const timerWrapper = document.querySelector('.timer');
 // const timeRangeSlider = document.querySelector('#rangeInput')
 const timerBar = document.querySelector('#timerBar');
@@ -41,6 +45,7 @@ controls.style.visibility = 'visible';
 play.addEventListener('click', playPauseMedia);
 mute.addEventListener('click', toggleSound);
 loop.addEventListener('click', toggleLoopPlay);
+fullscreen.addEventListener('click',openFullscreen);
 
 media.addEventListener('timeupdate', updateTimer);
 media.addEventListener('loadeddata', function(){
@@ -102,6 +107,8 @@ function toggleLoopPlay(){
         loop.style.backgroundColor = '#bf1313';
     }
 }
+
+
 function toggleIcons(icon1, icon2, turnOff){
     if(turnOff){
     icon1.style.display = 'inline-block';
@@ -169,5 +176,17 @@ function trimTime(time){
         time = time.slice(1);
     }
     return time;
+}
+
+function openFullscreen(){
+    if (media.requestFullscreen) {
+        media.requestFullscreen();
+      } else if (media.mozRequestFullScreen) { /* Firefox */
+        media.mozRequestFullScreen();
+      } else if (media.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        media.webkitRequestFullscreen();
+      } else if (media.msRequestFullscreen) { /* IE/Edge */
+        media.msRequestFullscreen();
+      }
 }
 
