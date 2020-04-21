@@ -16,9 +16,16 @@ app.set('view engine', 'ejs');
 /****************
  * ROUTES
  ****************/
-app.get('/', function(req, res){
-    res.render('landing');
-})
+
+    //ROOT
+    app.get('/', function(req, res){
+        res.render('landing');
+    })
+
+    //INDEX
+    app.get('/polls', function(req, res){
+        res.send('Show Route!!!');
+    })
 
 
 
