@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 
     //INDEX
     app.get('/polls', function(req, res){
-        res.send('Show Route!!!');
+        res.render('pollRoutes/index');
     })
 
 
