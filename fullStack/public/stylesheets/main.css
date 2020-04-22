@@ -1,6 +1,4 @@
-#mainNav{
-    margin-bottom: 30px;
-}
+
 
 #mainNav .navbar-brand{
     font-size: 2rem;
@@ -16,9 +14,13 @@
 
 .authenticationForm{
     text-align: center;
-    margin: auto;
+    margin: 30px auto;
     width: 350px;
 }
 .authenticationForm button{
     width: 100%;
+}
+
+.alert{
+    margin-top: 30px;
 }

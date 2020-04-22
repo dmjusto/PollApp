@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
+const flash = require('connect-flash');
 
 //ROUTE DEPENDENCIES
 const indexRoutes = require('./routes/indexRoutes');
@@ -19,9 +20,7 @@ const app = express();
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
-
-app.use(indexRoutes);
-app.use(pollRoutes);
+app.use(flash());
 
 
 //PASSPORT CONFIG
@@ -38,11 +37,17 @@ passport.deserializeUser(User.deserializeUser());
 
 
 //PASS CURRENTUSER TO ALL ROUTES
-// app.use(function(req, res, next){
-//     res.locq.currentUser = req.user;
-// })
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
+})
 
 
+
+app.use(indexRoutes);
+app.use(pollRoutes);
 
 /****************
  * ROUTES
