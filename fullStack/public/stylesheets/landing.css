@@ -4,7 +4,7 @@
     position: absolute;
     background-position: center;
     background-size: cover;
-    background-image: url('https://images.pexels.com/photos/590037/pexels-photo-590037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    background-image: url('https://images.pexels.com/photos/590014/pexels-photo-590014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 }
 
 #main h1{
@@ -15,6 +15,6 @@
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     color: #f7db3b;
     position: relative;
-    top: 35vh;
+    top: 12vh;
     text-align: center;
 }
