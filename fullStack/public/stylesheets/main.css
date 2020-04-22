@@ -1,4 +1,6 @@
-
+#mainNav{
+    margin-bottom: 30px;
+}
 
 #mainNav .navbar-brand{
     font-size: 2rem;
@@ -10,4 +12,13 @@
 
 #mainNav li:hover a{
     color: #80D7F5;
+}
+
+.authenticationForm{
+    text-align: center;
+    margin: auto;
+    width: 350px;
+}
+.authenticationForm button{
+    width: 100%;
 }

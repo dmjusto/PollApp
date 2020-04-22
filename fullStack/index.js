@@ -8,6 +8,10 @@ const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
 
+//ROUTE DEPENDENCIES
+const indexRoutes = require('./routes/indexRoutes');
+const pollRoutes = require('./routes/pollRoutes');
+
 /*****************
  * CONFIGURATION
  ****************/
@@ -15,6 +19,9 @@ const app = express();
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(indexRoutes);
+app.use(pollRoutes);
 
 
 //PASSPORT CONFIG
@@ -42,9 +49,9 @@ passport.deserializeUser(User.deserializeUser());
  ****************/
 
     //ROOT
-    app.get('/', function(req, res){
-        res.render('landing');
-    })
+    // app.get('/', function(req, res){
+    //     res.render('landing');
+    // })
 
     //INDEX
     app.get('/polls', function(req, res){
