@@ -4,8 +4,9 @@
     font-size: 2rem;
 }
 
-#mainNav li a{
+#mainNav li a, #mainNav li, #mainNav i{
     color: #ffffff;
+    padding: 0 .5rem;
 }
 
 #mainNav li:hover a{

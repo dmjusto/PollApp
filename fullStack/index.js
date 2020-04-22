@@ -21,6 +21,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(flash());
+mongoose.connect('mongodb://localhost:27017/pollApp', {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 //PASSPORT CONFIG
@@ -48,21 +49,6 @@ app.use(function(req, res, next){
 
 app.use(indexRoutes);
 app.use(pollRoutes);
-
-/****************
- * ROUTES
- ****************/
-
-    //ROOT
-    // app.get('/', function(req, res){
-    //     res.render('landing');
-    // })
-
-    //INDEX
-    app.get('/polls', function(req, res){
-        res.render('pollRoutes/index');
-    })
-
 
 
 /***************
