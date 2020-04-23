@@ -1,18 +1,18 @@
 <%- include('../partials/header') %>
 
 <div id="pollIndex" class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <a href="/polls/new" class="myButton btn btn-success">Post New Poll</a>
-        </div>
-    </div>
 
     <div class="list-group">
+        <div class="list-group-item-dark p-3 justify-content-end d-flex">
+            <!-- <button class="">date added</button>
+            <button class="">popular</button>
+            <button class="">controversial</button> -->
+            <button class="btn btn-success">Post New Poll</button>
+        </div>
         <% polls.forEach(poll => { %>
             <a class="list-group-item list-group-item-action" href="#">
-                <span><%= poll.title %> </span>
-                <p>Posted by: <%= poll.author.username %> </p>
-                <p>-<%= poll.createdAt.toDateString() %> </p>
+                <h3><%= poll.title %> </h3>
+                <small>Posted by: <%= poll.author.username %><p class="text-muted">-<%= poll.createdAt.toDateString() %> </p> </small>
             </a>
         <% }) %>
     </div>
