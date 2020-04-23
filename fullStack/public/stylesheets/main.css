@@ -13,13 +13,17 @@
     color: #80D7F5;
 }
 
-.authenticationForm{
+.Form{
     text-align: center;
     margin: 30px auto;
     width: 350px;
 }
-.authenticationForm button{
+.Form button[type = 'submit']{
     width: 100%;
+}
+#addChoice{
+    float: right;
+    margin: 5px 0 20px 0;
 }
 
 .alert{

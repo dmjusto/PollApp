@@ -1,0 +1,23 @@
+<%- include('../partials/header') %> 
+
+
+
+
+<form class="Form" action="/polls" method="POST">
+    <h1>Post New Form</h1>
+    <div class="form-group">
+        <input class="form-control" type="text" name="title" placeholder="poll title..." required autofocus aria-label="poll title">
+    </div>
+
+    <div id="choices" class="form-group">
+        <input type="text" class="form-control" name="choice[0]" placeholder="choice...(required)" required>
+        <input type="text" class="form-control" name="choice[1]" placeholder="choice...(required)" required>
+        <input type="text" class="form-control" name="choice[2]" placeholder="choice..." >
+        <input type="text" class="form-control" name="choice[3]" placeholder="choice..." >
+        <input type="text" class="form-control" name="choice[4]" placeholder="choice..." >
+    </div>
+
+    <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+</form>
+
+<%- include('../partials/footer') %> 
