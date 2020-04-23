@@ -38,6 +38,12 @@ h1{
 #pollIndex .row{
     justify-content: flex-end;
 }
+#pollIndex span{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
 .alert{
     margin-top: 30px;
 }
