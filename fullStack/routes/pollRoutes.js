@@ -4,7 +4,14 @@ const Poll = require('../models/poll');
 
 //INDEX ROUTE
 router.get('/polls', function(req, res){
-    res.render('poll/index');
+    Poll.find({}, function(err, polls){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.render('poll/index', {polls: polls});
+        }
+    })
 })
 
 //NEW

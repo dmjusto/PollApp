@@ -1,5 +1,21 @@
 <%- include('../partials/header') %>
 
-<h1>Index Page</h1>
-<a href="/polls/new" class="btn btn-success">Post New Poll</a>
+<div id="pollIndex" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="/polls/new" class="myButton btn btn-success">Post New Poll</a>
+        </div>
+    </div>
+
+    <div class="list-group">
+        <% polls.forEach(poll => { %>
+            <a class="list-group-item list-group-item-action" href="#">
+                <%= poll.title %> 
+                <p>Posted by: <%= poll.author.username %> </p>
+                <p>-<%= poll.createdAt.toDateString() %> </p>
+            </a>
+        <% }) %>
+    </div>
+</div>
+
 <%- include('../partials/footer') %> 
