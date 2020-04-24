@@ -1,0 +1,19 @@
+
+<%- include('../partials/header') %> 
+
+<form id="voteForm" class="Form" action="">
+    <h1><%= poll.title %> </h1>
+    <div class="form-group">
+        <% poll.options.forEach(option => { %>
+            <% if (option !== "") { %>
+                <div class="voteContainer">
+                    <p><%= option %></p> 
+                    <input class="radioBtn" type="radio" name="vote">
+                </div>
+            <% } %>
+        <% }) %>
+        <button class="btn btn-success btn-lg" type="submit">Submit Vote</button>
+    </div>
+</form>
+
+<%- include('../partials/footer') %> 

@@ -22,8 +22,7 @@ router.get('/polls/new', function(req, res){
 //CREATE
 router.post('/polls', function(req, res){
     const title = req.body.title;
-    const options = req.body.choices;
-    // const creationDate = new Date().date
+    const options = req.body.choice;
     const newPoll = {title: title, options: options};
     Poll.create(newPoll, function(err, newlyCreatedPoll){
         if(err){
@@ -34,6 +33,19 @@ router.post('/polls', function(req, res){
             console.log(newlyCreatedPoll);
             req.flash('success', 'New Poll ');
             res.redirect('/polls');
+        }
+    })
+})
+
+//SHOW ROUTE
+router.get('/polls/:id', function(req, res){
+    Poll.findById(req.params.id, function(err, foundPoll){
+        if(err || !foundPoll){
+            req.flash('error', 'Poll not found');
+            res.redirect('back');
+        }
+        else{
+            res.render('poll/show', {poll: foundPoll});
         }
     })
 })
