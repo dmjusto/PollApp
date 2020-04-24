@@ -50,5 +50,12 @@ router.get('/polls/:id', function(req, res){
     })
 })
 
+//UPDATE ROUTE
+router.put('/polls/:id', function(req, res){
+    
+    req.flash('success', 'vote: ' + req.body.vote)
+    res.redirect('back')
+})
+
 
 module.exports = router;
