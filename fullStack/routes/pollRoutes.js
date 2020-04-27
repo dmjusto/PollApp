@@ -58,9 +58,17 @@ router.get('/polls/:id', function(req, res){
 
 //UPDATE ROUTE
 router.put('/polls/:id', function(req, res){
+    Poll.findById(req.params.id, function(err, foundPoll){
+        if(err){
+            console.log(err);
+        }
+        else{
+            req.flash('success', 'vote index: ' +  req.body.vote)
+            res.redirect('back')
+        }
+    })
     
-    req.flash('success', 'vote: ' + req.body.vote)
-    res.redirect('back')
+    
 })
 
 //DESTROY ROUTE

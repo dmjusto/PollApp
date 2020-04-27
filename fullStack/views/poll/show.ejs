@@ -10,14 +10,12 @@
 <form id="voteForm" class="Form" action="/polls/<%= poll._id %>?_method=PUT" method="POST">
     <h1><%= poll.title %></h1>
     <div class="form-group">
-        <% poll.options.forEach(option => { %>
-            <% if (option !== "") { %>
-                <div class="voteContainer">
-                    <p><%= option %></p> 
-                    <input class="radioBtn" type="radio" required name="vote" value="<%= option %> ">
-                </div>
-            <% } %>
-        <% }) %>
+        <% for( let i = 0; i < poll.options.length; i++ ) { %>
+            <div class="voteContainer">
+                <p><%= poll.options[i] %></p> 
+                <input class="radioBtn" type="radio" required name="vote" value="<%= i %> ">
+            </div>
+        <% } %>
         <button class="btn btn-success btn-lg" type="submit">Submit Vote</button>
     </div>
 </form>
