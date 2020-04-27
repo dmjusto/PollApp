@@ -23,7 +23,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(flash());
 app.use(methodOverride('_method'));
-mongoose.connect('mongodb://localhost:27017/pollApp', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/pollApp', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 
 
 //PASSPORT CONFIG

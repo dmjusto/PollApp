@@ -2,7 +2,7 @@
 <%- include('../partials/header') %> 
 
 <% if (currentUser && poll.author.id.equals(currentUser.id)) { %>
-    <form class="form deleteForm" action="/polls/<%= poll._id %>?_method=DELETE " method="POST">
+    <form class="form deleteForm" action="/polls/<%= poll._id %>/delete?_method=DELETE " method="POST">
         <button class="btn btn-outline-danger btn-sm ">Delete Poll</button>
     </form>
 <% } %>

@@ -12,6 +12,29 @@ middlewareObj.isLoggedIn = function(req, res, next){
     res.redirect('/login');
 }
 
+middlewareObj.checkPollOwnership = function(req, res, next){
+    if(req.isAuthenticated()){
+        Poll.findById(req.params.id, function(err, foundPoll){
+            if(err || !foundPoll){
+                req.flash('error', 'Poll not found');
+            }
+            else{
+                if(foundPoll.author.id.equals(req.user._id)){
+                    next();
+                }
+                else{
+                    req.flash('error', "you don't have permission to do that");
+                    res.redirect('back');
+                }
+            }
+        })
+    }
+    else{
+        req.flash('error', 'You must be logged in to do that');
+        res.redirect('back');
+    }
+}
+
 
 module.exports = middlewareObj;
 

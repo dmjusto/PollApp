@@ -64,7 +64,7 @@ router.put('/polls/:id', function(req, res){
 })
 
 //DESTROY ROUTE
-router.delete('/polls/:id', function(req, res){
+router.delete('/polls/:id/delete', middleware.checkPollOwnership, function(req, res){
     Poll.findByIdAndRemove(req.params.id, function(err, removedPoll){
         if(err){
             req.flash('error', err);
