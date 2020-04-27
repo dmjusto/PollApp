@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const Poll = new mongoose.Schema({
     title: String,
     options: [String],
+    votes: [-1,-1,-1,-,1,-1],
+    totalVotes: Number,
     author: {
         username: String,
         id: {
