@@ -42,6 +42,15 @@ h1{
     text-transform: capitalize;
 }
 
+.deleteForm{
+    width: 350px;
+    margin: 30px auto -32px auto;
+    display: flex;
+}
+.deleteForm button{
+    margin-left: auto;
+}
+
 .alert{
     margin-top: 30px;
 }

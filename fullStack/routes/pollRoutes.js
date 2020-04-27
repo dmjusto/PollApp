@@ -59,7 +59,18 @@ router.put('/polls/:id', function(req, res){
 })
 
 //DESTROY ROUTE
-
+router.delete('/polls/:id', function(req, res){
+    Poll.findByIdAndRemove(req.params.id, function(err, removedPoll){
+        if(err){
+            req.flash('error', err);
+            res.redirect('/back');
+        }
+        else{
+            req.flash('success', 'Poll deleted');
+            res.redirect('/polls');
+        }
+    })
+})
 
 
 module.exports = router;
