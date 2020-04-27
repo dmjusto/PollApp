@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Poll = require('../models/poll');
+const middleware = require('../middleware');
 
 //INDEX ROUTE
 router.get('/polls', function(req, res){
@@ -15,12 +16,12 @@ router.get('/polls', function(req, res){
 })
 
 //NEW
-router.get('/polls/new', function(req, res){
+router.get('/polls/new', middleware.isLoggedIn, function(req, res){
     res.render('poll/new');
 })
 
 //CREATE
-router.post('/polls', function(req, res){
+router.post('/polls', middleware.isLoggedIn, function(req, res){
     const title = req.body.title;
     const options = req.body.choice;
     const newPoll = {title: title, options: options};
@@ -56,6 +57,9 @@ router.put('/polls/:id', function(req, res){
     req.flash('success', 'vote: ' + req.body.vote)
     res.redirect('back')
 })
+
+//DESTROY ROUTE
+
 
 
 module.exports = router;
