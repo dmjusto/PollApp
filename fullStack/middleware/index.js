@@ -19,7 +19,7 @@ middlewareObj.checkPollOwnership = function(req, res, next){
                 req.flash('error', 'Poll not found');
             }
             else{
-                if(foundPoll.author.id.equals(req.user._id)){
+                if(foundPoll.author.id.equals(req.user._id) || req.user.isAdmin){
                     next();
                 }
                 else{
