@@ -86,3 +86,38 @@ h1{
     width: 100%;
     height: 100%;
 }
+
+#pollResults{
+    margin: auto;
+    max-width:  600px;
+    font-weight: bold;
+}
+
+#pollResults .row{
+    height: 20px;
+    margin: 10px 0;
+    align-items: center;
+}
+#pollOption{
+    text-align: end;
+    padding-left: 10px;
+    text-transform: capitalize;
+}
+
+.percentDisplay span{
+    padding-left: 10px;
+}
+
+.percentDisplay{
+    height: 100%;
+}
+
+#pollResults .row:nth-child(n) .percentDisplay{
+    background-color: #DB697E;
+}
+#pollResults .row:nth-child(2n) .percentDisplay{
+    background-color: #71C5E9;
+}
+#pollResults .row:nth-child(3n) .percentDisplay{
+    background-color: #EAC46D;
+}

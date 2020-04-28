@@ -20,10 +20,23 @@
     </div>
 </form>
 
-<ul>
+<!-- POLL TABLE -->
+<div id="pollResults">
     <% for( let i = 0; i < poll.options.length; i++ ) { %>
-        <li><%= poll.options[i] %>: <%= poll.votes[i] %></li>
+        <div class="row">
+            <div id="pollOption" class="col-md-3">
+                <span><%= poll.options[i] %> </span>
+            </div>
+    
+            <div id="percentContainer" class="col-md-9">
+                <% if (poll.totalVotes !== 0) { %>
+                    <div class="percentDisplay" style=" width: <%= Math.round(poll.votes[i]/poll.totalVotes *1000) / 10 %>%;">
+                        <span><%= Math.round(poll.votes[i]/poll.totalVotes *1000) / 10%>%</span>
+                    </div>
+                <% } %>
+            </div>
+        </div>
     <% } %>
-</ul>
+</div>
 
 <%- include('../partials/footer') %> 

@@ -27,6 +27,7 @@ router.post('/polls', middleware.isLoggedIn, function(req, res){
     const choices = req.body.choice;
     var options = [];
     var votes = [];
+    var totalVotes = 0;
     choices.forEach(choice => {
         if(choice !== ""){
             options.push(choice);
@@ -37,7 +38,7 @@ router.post('/polls', middleware.isLoggedIn, function(req, res){
         username: req.user.username,
         id: req.user._id
     };
-    const newPoll = {title: title, options: options, votes: votes, author: author};
+    const newPoll = {title: title, options: options, votes: votes, totalVotes: totalVotes, author: author};
     
     Poll.create(newPoll, function(err, newlyCreatedPoll){
         if(err){
@@ -78,6 +79,12 @@ router.put('/polls/:id',  function(req, res){
             voteCount++;
             foundPoll.votes.set(index, voteCount);
 
+            var totalVotes = foundPoll.votes.reduce(function(a, b){
+                return a + b;
+            }, 0);
+
+            foundPoll.totalVotes = totalVotes;
+
             foundPoll.save(function(err){
                 if(err){
                     console.log(err);
@@ -85,7 +92,6 @@ router.put('/polls/:id',  function(req, res){
                     res.redirect('back');
                 }
                 else{
-                    req.flash('success', 'voted');
                     return res.redirect('/polls/' + foundPoll._id);
                 }
             })
