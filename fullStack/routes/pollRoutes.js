@@ -37,7 +37,7 @@ router.post('/polls', middleware.isLoggedIn, function(req, res){
         username: req.user.username,
         id: req.user._id
     };
-    const newPoll = {title: title, options: options, author: author};
+    const newPoll = {title: title, options: options, votes: votes, author: author};
     
     Poll.create(newPoll, function(err, newlyCreatedPoll){
         if(err){
