@@ -23,7 +23,16 @@ router.get('/polls/new', middleware.isLoggedIn, function(req, res){
 //CREATE
 router.post('/polls', middleware.isLoggedIn, function(req, res){
     const title = req.body.title;
-    const options = req.body.choice;
+    // const options = req.body.choice;
+    const choices = req.body.choice;
+    var options = [];
+    var votes = [];
+    choices.forEach(choice => {
+        if(choice !== ""){
+            options.push(choice);
+            votes.push(0);
+        }
+    });
     const author = {
         username: req.user.username,
         id: req.user._id
