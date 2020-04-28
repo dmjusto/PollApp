@@ -35,6 +35,9 @@ h1{
 #pollIndex{
     margin-top: 50px;
 }
+#pollIndex h3{
+    margin-bottom: 0;
+}
 #pollIndex .row{
     justify-content: flex-end;
 }
