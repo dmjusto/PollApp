@@ -20,5 +20,10 @@
     </div>
 </form>
 
+<ul>
+    <% for( let i = 0; i < poll.options.length; i++ ) { %>
+        <li><%= poll.options[i] %>: <%= poll.votes[i] %></li>
+    <% } %>
+</ul>
 
 <%- include('../partials/footer') %> 
