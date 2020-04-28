@@ -66,14 +66,30 @@ router.get('/polls/:id', function(req, res){
 })
 
 //UPDATE ROUTE
-router.put('/polls/:id', function(req, res){
+router.put('/polls/:id',  function(req, res){
     Poll.findById(req.params.id, function(err, foundPoll){
         if(err){
             console.log(err);
         }
         else{
-            req.flash('success', 'vote index: ' +  req.body.vote)
-            res.redirect('back')
+            const index = parseInt(req.body.vote);
+
+            var voteCount = foundPoll.votes[index];
+            voteCount++;
+            foundPoll.votes.set(index, voteCount);
+
+            foundPoll.save(function(err){
+                if(err){
+                    console.log(err);
+                    req.flash('error', err);
+                    res.redirect('back');
+                }
+                else{
+                    req.flash('success', 'voted');
+                    return res.redirect('/polls/' + foundPoll._id);
+                }
+            })
+            
         }
     })
     
