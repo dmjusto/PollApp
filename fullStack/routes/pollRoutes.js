@@ -75,51 +75,40 @@ router.put('/polls/:id',  function(req, res){
         else{
             //check if current user already voted
             var userVoted = foundPoll.voters.some(function(voter){
-                console.log('this user' + req.user_id)
-                console.log('previous voters: ' + foundPoll.voters)
                 return voter.equals(req.user._id);
             })
-            console.log('user voted: ' + userVoted)
             //User already voted, so kick them out
             if(userVoted){
-                console.log('already voted')
                 req.flash('error', 'you already voted');
                 return res.redirect('back');
             }
-            //User hasn't voted yet so add them to list of voters
+            //User hasn't voted yet so allow to vote
             else{
                 foundPoll.voters.push(req.user._id);
+
+                const index = parseInt(req.body.vote);
+                var voteCount = foundPoll.votes[index];
+                voteCount++;
+                foundPoll.votes.set(index, voteCount);
+
+                var totalVotes = foundPoll.votes.reduce(function(a, b){
+                    return a + b;
+                }, 0);
+                foundPoll.totalVotes = totalVotes;
+
+                foundPoll.save(function(err){
+                    if(err){
+                        console.log(err);
+                        req.flash('error', err);
+                        res.redirect('back');
+                    }
+                    else{
+                        return res.redirect('/polls/' + foundPoll._id);
+                    }
+                })
             }
-            /////////////////////////////////////
-
-
-            const index = parseInt(req.body.vote);
-
-            var voteCount = foundPoll.votes[index];
-            voteCount++;
-            foundPoll.votes.set(index, voteCount);
-
-            var totalVotes = foundPoll.votes.reduce(function(a, b){
-                return a + b;
-            }, 0);
-
-            foundPoll.totalVotes = totalVotes;
-
-            foundPoll.save(function(err){
-                if(err){
-                    console.log(err);
-                    req.flash('error', err);
-                    res.redirect('back');
-                }
-                else{
-                    return res.redirect('/polls/' + foundPoll._id);
-                }
-            })
-            
         }
     })
-    
-    
 })
 
 //DESTROY ROUTE
