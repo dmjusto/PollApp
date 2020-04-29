@@ -61,24 +61,24 @@ router.get('/polls/:id', function(req, res){
             res.redirect('back');
         }
         else{
-            res.render('poll/show', {poll: foundPoll});
+            var alreadyVoted;
+            if(req.isAuthenticated()){
+                alreadyVoted = getUserVoted(foundPoll, req);
+            }         
+            res.render('poll/show', {poll: foundPoll, alreadyVoted: alreadyVoted});
         }
     })
 })
 
-//UPDATE ROUTE
-router.put('/polls/:id',  function(req, res){
+//VOTE ROUTE
+router.post('/polls/:id/vote', middleware.isLoggedIn, function(req, res){
     Poll.findById(req.params.id, function(err, foundPoll){
         if(err){
             console.log(err);
         }
         else{
             //check if current user already voted
-            var userVoted = foundPoll.voters.some(function(voter){
-                return voter.equals(req.user._id);
-            })
-            //User already voted, so kick them out
-            if(userVoted){
+            if(getUserVoted(foundPoll, req)){
                 req.flash('error', 'you already voted');
                 return res.redirect('back');
             }
@@ -127,3 +127,11 @@ router.delete('/polls/:id/delete', middleware.checkPollOwnership, function(req, 
 
 
 module.exports = router;
+
+function getUserVoted(foundPoll, req)
+{
+    return foundPoll.voters.some(function (voter)
+    {
+        return voter.equals(req.user._id);
+    });
+}

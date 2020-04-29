@@ -7,16 +7,26 @@
     </form>
 <% } %>
 
-<form id="voteForm" class="Form" action="/polls/<%= poll._id %>?_method=PUT" method="POST">
+<form id="voteForm" class="Form" action="/polls/<%= poll._id %>/vote" method="POST">
     <h1><%= poll.title %></h1>
     <div class="form-group">
-        <% for( let i = 0; i < poll.options.length; i++ ) { %>
-            <div class="voteContainer">
-                <p><%= poll.options[i] %></p> 
-                <input class="radioBtn" type="radio" required name="vote" value="<%= i %> ">
-            </div>
+        <% if (!alreadyVoted) { %>
+            <% for( let i = 0; i < poll.options.length; i++ ) { %>
+                <div class="voteContainer">
+                    <p><%= poll.options[i] %></p> 
+                    <input class="radioBtn" type="radio" required name="vote" value="<%= i %> ">
+                </div>
+            <% } %>
+            <button class="btn btn-success btn-lg" type="submit">Submit Vote</button>
+        <% } else { %>
+            <% for( let i = 0; i < poll.options.length; i++ ) { %>
+                <div class="voteContainer">
+                    <p><%= poll.options[i] %></p> 
+                    <input class="radioBtn" type="radio" disabled required name="vote" value="<%= i %> ">
+                </div>
+            <% } %>
+            <button class="btn btn-success btn-lg" disabled type="submit">Submit Vote</button>
         <% } %>
-        <button class="btn btn-success btn-lg" type="submit">Submit Vote</button>
     </div>
 </form>
 
