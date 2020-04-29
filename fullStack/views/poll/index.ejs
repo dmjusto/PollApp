@@ -11,8 +11,21 @@
         </div>
         <% polls.forEach(poll => { %>
             <a href="/polls/<%= poll._id %> " class="list-group-item list-group-item-action">
-                <h3><%= poll.title %></h3>
-                <small><span> - Posted by: <%= poll.author.username %></span> <span class="text-muted">(<%= poll.createdAt.toDateString() %>) </span> </small>
+                <div class="row">
+                    <div class=" col-2 col-lg-1">
+                        <div class="pollPreview">
+                            <% for( let i = 0; i < poll.options.length; i++ ) { %>
+                            <div class="bars" style=" height: <%= Math.round(poll.votes[i]/poll.totalVotes *1000) / 10 %>%;"></div>   
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="col-10 col-lg-11">
+                        <h3><%= poll.title %></h3>
+                        <small><span> - Posted by: <%= poll.author.username %></span> <span class="text-muted">(<%= poll.createdAt.toDateString() %>) </span> </small>
+                    </div>
+                </div>
+                
             </a>
         <% }) %>
     </div>
