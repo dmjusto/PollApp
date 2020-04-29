@@ -6,6 +6,12 @@ const Poll = new mongoose.Schema({
     options: [String],
     votes: [Number],
     totalVotes: Number,
+    voters: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
     author: {
         username: String,
         id: {
