@@ -106,7 +106,8 @@ h1{
 
 #pollResults{
     margin: auto;
-    max-width:  600px;
+    padding: 10px 30px;
+    /* max-width:  600px; */
     font-weight: bold;
 }
 

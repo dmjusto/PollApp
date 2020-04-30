@@ -34,11 +34,11 @@
 <div id="pollResults">
     <% for( let i = 0; i < poll.options.length; i++ ) { %>
         <div class="row">
-            <div id="pollOption" class="col-md-3">
+            <div id="pollOption" class="col-md-5">
                 <span><%= poll.options[i] %> </span>
             </div>
     
-            <div id="percentContainer" class="col-md-9">
+            <div id="percentContainer" class="col-md-7">
                 <% if (poll.totalVotes !== 0) { %>
                     <div class="percentDisplay" style=" width: <%= Math.round(poll.votes[i]/poll.totalVotes *1000) / 10 %>%;">
                         <span><%= Math.round(poll.votes[i]/poll.totalVotes *1000) / 10%>%</span>

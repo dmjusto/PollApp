@@ -1,3 +1,4 @@
+
 /**************
  * DEPENDENCIES
  **************/
@@ -10,6 +11,9 @@ const User = require('./models/user');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const expressSanitzer = require('express-sanitizer');
+
+const { seedDb } = require("./seedDb");
+
 
 //ROUTE DEPENDENCIES
 const indexRoutes = require('./routes/indexRoutes');
@@ -55,9 +59,23 @@ app.use(indexRoutes);
 app.use(pollRoutes);
 
 
+/****************
+ * SEED DATABASE
+ ***************/
+
+ seedDb();
+
+
+
+
 /***************
  * START SERVER
  **************/
 app.listen(3000, function(){
     console.log('PollApp started on port 3000');
 })
+
+
+
+
+
