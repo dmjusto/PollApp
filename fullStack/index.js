@@ -9,6 +9,7 @@ const localStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
+const expressSanitzer = require('express-sanitizer');
 
 //ROUTE DEPENDENCIES
 const indexRoutes = require('./routes/indexRoutes');
@@ -21,6 +22,7 @@ const app = express();
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(expressSanitzer());
 app.use(flash());
 app.use(methodOverride('_method'));
 mongoose.connect('mongodb://localhost:27017/pollApp', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});

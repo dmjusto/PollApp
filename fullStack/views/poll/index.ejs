@@ -15,7 +15,11 @@
                     <div class=" col-2 col-lg-1">
                         <div class="pollPreview">
                             <% for( let i = 0; i < poll.options.length; i++ ) { %>
-                            <div class="bars" style=" height: <%= Math.round(poll.votes[i]/poll.totalVotes *1000) / 10 %>%;"></div>   
+                                <% if (poll.votes[i] !== 0) { %>
+                                    <div class="bars" style=" height: <%= Math.round(poll.votes[i]/poll.totalVotes *1000) / 10 %>%;"></div>
+                                <% } else { %>
+                                    <div class="bars" style=" height: 8%;"></div>
+                                <% } %>
                             <% } %>
                         </div>
                     </div>
