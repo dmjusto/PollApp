@@ -5,14 +5,31 @@ const middleware = require('../middleware');
 
 //INDEX ROUTE
 router.get('/polls', function(req, res){
-    Poll.find({}, function(err, polls){
-        if(err){
-            console.log(err);
-        }
-        else{
-            res.render('poll/index', {polls: polls});
-        }
-    })
+    var perPage = 8;
+    var pageQuery = parseInt(req.query.page);
+    var pageNumber = pageQuery ? pageQuery : 1;
+    Poll.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allPolls){
+        Poll.count().exec(function(err, count){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.render('poll/index', {
+                    polls: allPolls,
+                    current: pageNumber,
+                    pages: Math.ceil(count/ perPage)
+                });
+            }
+        });
+    });
+    // Poll.find({}, function(err, polls){
+    //     if(err){
+    //         console.log(err);
+    //     }
+    //     else{
+    //         res.render('poll/index', {polls: polls});
+    //     }
+    // })
 })
 
 //NEW

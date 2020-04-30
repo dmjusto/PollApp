@@ -15,6 +15,10 @@ h1{
     color: #80D7F5;
 }
 
+#paginationNav{
+    margin-top: 30px;
+}
+
 .list-group{
     margin-top: 5px;
 }

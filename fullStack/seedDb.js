@@ -3,7 +3,7 @@ const faker = require('faker');
 const Poll = require('./models/poll');
 function seedDb()
 {
-    for (let i = 0; i < 3; i++)
+    for (let i = 0; i < 30; i++)
     {
         //generate fake User
         const newUser = { username: faker.internet.userName() };

@@ -63,7 +63,7 @@ app.use(pollRoutes);
  * SEED DATABASE
  ***************/
 
- seedDb();
+//  seedDb();
 
 
 
