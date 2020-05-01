@@ -3,10 +3,16 @@
 <div id="pollIndex" class="container">
 
     <div class="list-group">
-        <div class="list-group-item-dark p-3 justify-content-end d-flex">
-            <!-- <button class="">date added</button>
-            <button class="">popular</button>
-            <button class="">controversial</button> -->
+        <div class="list-group-item-dark p-3 justify-content-between d-flex">
+            <div>
+                <form action="/polls" method="get">
+                    <button class="" name="sortByNew" value="new" id="sortNewBtn">New</button>
+                </form>
+                <form action="/polls" method="get">
+                    <button class="" name="sortByPopular" value="popular" id="sortPopularBtn">Popular</button>
+                </form>
+            </div>
+
             <a href="/polls/new" class="btn btn-success">Post New Poll</a>
         </div>
         <% polls.forEach(poll => { %>

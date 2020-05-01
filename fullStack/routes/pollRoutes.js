@@ -3,12 +3,29 @@ const router = express.Router();
 const Poll = require('../models/poll');
 const middleware = require('../middleware');
 
+var sortCriteria = [
+    {createdAt: -1},
+    {totalVotes: -1}
+];
+var sortBy = sortCriteria[0];
+
+
 //INDEX ROUTE
 router.get('/polls', function(req, res){
     var perPage = 8;
     var pageQuery = parseInt(req.query.page);
     var pageNumber = pageQuery ? pageQuery : 1;
-    Poll.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allPolls){
+    
+    if(req.query.sortByNew){
+        sortBy = sortCriteria[0];//sorting by new
+        sortCriteria[0].createdAt *= -1;
+    }
+    else if(req.query.sortByPopular){
+        sortBy = sortCriteria[1];//sorting by popular
+        sortCriteria[1].totalVotes *= -1;
+    }
+    
+    Poll.find({}).sort(sortBy).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allPolls){
         Poll.count().exec(function(err, count){
             if(err){
                 console.log(err);
