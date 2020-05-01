@@ -4,16 +4,25 @@
 
     <div class="list-group">
         <div class="list-group-item-dark p-3 justify-content-between d-flex">
-            <form action="">
-                <input type="text" placeholder="search..." aria-label="search">
+            <form class="form-inline" action="/polls" method="GET">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="search" placeholder="Poll search..." aria-label="search">
+                    <input class="btn btn-dark" type="submit" value="Search">
+                </div>
             </form>
 
             <div class="d-flex">
-                <form class="" action="/polls" method="get">
-                    <button class="btn btn-info btn-sm sortBtn" name="sortByNew" value="new" id="sortNewBtn">New <i class="fas fa-sort" aria-label="sort by new"></i></button>
+                <form class="" action="/polls" method="GET">
+                    <button class="btn btn-info btn-sm sortBtn" name="sortBy" value="New" id="sortNewBtn">New <i class="fas fa-sort" aria-label="sort by new"></i></button>
+                    <% if (search) { %>
+                        <input type="hidden" name="search" value="<%= search %>">
+                    <% } %>
                 </form>
                 <form class="" action="/polls" method="get">
-                    <button class="btn btn-info btn-sm sortBtn" name="sortByPopular" value="popular" id="sortPopularBtn" aria-label="sort by popular">Popular <i class="fas fa-sort"></i></button>
+                    <button class="btn btn-info btn-sm sortBtn" name="sortBy" value="Popular" id="sortPopularBtn" aria-label="sort by popular">Popular <i class="fas fa-sort"></i></button>
+                    <% if (search) { %>
+                        <input type="hidden" name="search" value="<%= search %>">
+                    <% } %>
                 </form>
             </div>
 
@@ -52,8 +61,8 @@
                     <li class="page-item disabled"><a class="page-link" href="">First</a></li>
                     <li class="page-item disabled"><a class="page-link" href=""><<</a></li>
                 <% } else { %>
-                    <li><a class="page-link" href="/polls">First</a></li>
-                    <li><a class="page-link" href="/polls?page=<%= Number(current) - 1 %> "><<</a></li>
+                    <li><a class="page-link" href="/polls<%if(search){%>?search=<%=search%><%}%>">First</a></li>
+                    <li><a class="page-link" href="/polls?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%> "><<</a></li>
                 <% } %>
 
 
@@ -65,7 +74,7 @@
                     <% if (i == current) { %>
                         <li class="page-item disabled"><a class="page-link" href=""><%= i %> </a></li>
                     <% } else { %>
-                        <li><a class="page-link" href="/polls?page=<%= i %> "><%= i %> </a></li>
+                        <li><a class="page-link" href="/polls?page=<%= i %><%if(search){%>&search=<%=search%><%}%> "><%= i %> </a></li>
                     <% } %>
                      <% if (i == Number(current) + 4 && i < pages) { %>
                         <li class="page-item disabled"><a class="page-link" href="">...</a></li>
@@ -77,8 +86,8 @@
                     <li class="page-item disabled"><a class="page-link" href="">>></a></li>
                     <li class="page-item disabled"><a class="page-link" href="">Last</a></li>
                 <% } else { %>
-                    <li><a class="page-link" href="/polls?page=<%= Number(current) + 1 %> ">>></a></li>
-                    <li><a class="page-link" href="/polls?page=<%= pages %> ">Last</a></li>
+                    <li><a class="page-link" href="/polls?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%> ">>></a></li>
+                    <li><a class="page-link" href="/polls?page=<%= pages %><%if(search){%>&search=<%=search%><%}%> ">Last</a></li>
                 <% } %>
             </ul>
             

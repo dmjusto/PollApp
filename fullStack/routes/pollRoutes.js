@@ -7,7 +7,7 @@ var sortCriteria = [
     {createdAt: -1},
     {totalVotes: -1}
 ];
-var sortBy = sortCriteria[0];
+var sortBy;
 
 
 //INDEX ROUTE
@@ -15,38 +15,55 @@ router.get('/polls', function(req, res){
     var perPage = 8;
     var pageQuery = parseInt(req.query.page);
     var pageNumber = pageQuery ? pageQuery : 1;
-    
-    if(req.query.sortByNew){
+
+    if(req.query.sortBy === "New"){
         sortBy = sortCriteria[0];//sorting by new
         sortCriteria[0].createdAt *= -1;
     }
-    else if(req.query.sortByPopular){
+    else if(req.query.sortBy === "Popular"){
         sortBy = sortCriteria[1];//sorting by popular
         sortCriteria[1].totalVotes *= -1;
     }
-    
-    Poll.find({}).sort(sortBy).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allPolls){
-        Poll.countDocuments().exec(function(err, count){
-            if(err){
-                console.log(err);
-            }
-            else{
-                res.render('poll/index', {
-                    polls: allPolls,
-                    current: pageNumber,
-                    pages: Math.ceil(count/ perPage)
-                });
-            }
+    else{
+        sortBy = {};
+    }
+
+    //Fuzzy Search
+    if(req.query.search){
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Poll.find({title: regex}).sort(sortBy).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allPolls){
+            Poll.countDocuments({title: regex}).exec(function(err, count){
+                if(err){
+                    console.log(err);
+                }
+                else{
+                    res.render('poll/index', {
+                        polls: allPolls,
+                        current: pageNumber,
+                        pages: Math.ceil(count/ perPage),
+                        search: req.query.search
+                    });
+                }
+            });
         });
-    });
-    // Poll.find({}, function(err, polls){
-    //     if(err){
-    //         console.log(err);
-    //     }
-    //     else{
-    //         res.render('poll/index', {polls: polls});
-    //     }
-    // })
+    }
+    else{
+        Poll.find({}).sort(sortBy).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allPolls){
+            Poll.countDocuments().exec(function(err, count){
+                if(err){
+                    console.log(err);
+                }
+                else{
+                    res.render('poll/index', {
+                        polls: allPolls,
+                        current: pageNumber,
+                        pages: Math.ceil(count/ perPage),
+                        search: false
+                    });
+                }
+            });
+        });
+    }
 })
 
 //NEW
@@ -169,3 +186,8 @@ function getUserVoted(foundPoll, req)
         return voter.equals(req.user._id);
     });
 }
+
+//fuzzy search
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
