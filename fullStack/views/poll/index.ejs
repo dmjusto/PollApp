@@ -4,12 +4,16 @@
 
     <div class="list-group">
         <div class="list-group-item-dark p-3 justify-content-between d-flex">
+            <form action="">
+                <input type="text" placeholder="search..." aria-label="search">
+            </form>
+
             <div class="d-flex">
                 <form class="" action="/polls" method="get">
-                    <button class="btn btn-info btn-sm sortBtn" name="sortByNew" value="new" id="sortNewBtn">New <i class="fas fa-sort"></i></button>
+                    <button class="btn btn-info btn-sm sortBtn" name="sortByNew" value="new" id="sortNewBtn">New <i class="fas fa-sort" aria-label="sort by new"></i></button>
                 </form>
                 <form class="" action="/polls" method="get">
-                    <button class="btn btn-info btn-sm sortBtn" name="sortByPopular" value="popular" id="sortPopularBtn">Popular <i class="fas fa-sort"></i></button>
+                    <button class="btn btn-info btn-sm sortBtn" name="sortByPopular" value="popular" id="sortPopularBtn" aria-label="sort by popular">Popular <i class="fas fa-sort"></i></button>
                 </form>
             </div>
 

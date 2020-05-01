@@ -26,7 +26,7 @@ router.get('/polls', function(req, res){
     }
     
     Poll.find({}).sort(sortBy).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, allPolls){
-        Poll.count().exec(function(err, count){
+        Poll.countDocuments().exec(function(err, count){
             if(err){
                 console.log(err);
             }
