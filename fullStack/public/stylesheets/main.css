@@ -36,6 +36,9 @@ h1{
     margin-bottom: 5px;
 }
 
+.sortBtn{
+    margin: 0 5px;
+}
 #pollIndex{
     margin-top: 50px;
 }
